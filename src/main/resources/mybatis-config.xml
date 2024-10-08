@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties">
+    </properties>
+        <settings>
+            <setting name="logImpl" value="LOG4J"/>
+        </settings>
+    <typeAliases>
+        <package name="com.ashitem.domain"></package>
+    </typeAliases>
+    <plugins>
+<!--一对多分页查询会出现显示不全的问题，通过分步查询即可解决-->
+        <!-- 分页查询插件，常在通用mapper之前-->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <!--指定方言 -->
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+</configuration>
